@@ -1,0 +1,90 @@
+<html>
+<head>
+<script type="text/javascript" src="js/stats.js"></script>
+
+<script type="text/javascript" src="js/constants.js"></script>
+
+
+<script type="text/javascript" src="js/engine.js"></script>
+<script type="text/javascript" src="js/InputManager.js"></script>
+
+<script type="text/javascript" src="js/MainCharacter.js"></script>
+<script type="text/javascript" src="js/Character.js"></script>
+<script type="text/javascript" src="js/antena.js"></script>
+<script type="text/javascript" src="js/Palas.js"></script>
+<script type="text/javascript" src="js/Canal.js"></script>
+<script type="text/javascript" src="js/sprites.js"></script>
+<script type="text/javascript" src="js/Animation.js"></script>
+<script type="text/javascript" src="js/world.js"></script>
+
+
+<script type="text/javascript" src="js/map.js"></script>
+<script type="text/javascript" src="js/Dialog.js"></script>
+
+
+
+<script type="text/javascript">
+
+
+    window.onload = function()
+    {
+        
+        var stats = new Stats();
+        stats.domElement.style.position = 'absolute';
+        stats.domElement.style.left = '650px';
+        stats.domElement.style.top = '0px';
+        document.body.appendChild(stats.domElement);
+        
+           
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext("2d");
+        
+        var tiles = [];
+        walk = [];
+        
+        console.log(WorldZones)
+        
+        var world = new Map({ World: WorldZones  });
+        
+        var Alex = new MainCharacter({src:'img/character.png', speed: 30, posX: 320, posY: 500});
+
+        //var c = [Rebeca, Fali, Gonza, Natalia, JM, Borja, Valde, Alberto, Guille, Miguel];
+        
+        //var c = [Borja, JM, Gonza];
+        //var c = [Rebeca, Fali, Valde, Alberto, Guille, Miguel, Ana, canal, palas];
+        
+        var c = [Natalia];
+        
+    	var Game = new Engine({ctx: ctx, stats: stats, map: world, characters: c, mainCharacter: Alex});   
+
+    	var dialog = new Dialog({text:"Welcome to my curriculum vitae! I'm Alejandro Maybe you would like to visit the differents places in this game. You can visit the      Harbour research laboratory, the Robotic Lab at URJC or the incredible project ERLE. Don't forget talk with the people! Have a nice     game.", img:'img/main.png'});
+    	
+    	Game.setDialog(dialog);
+
+        Game.start();  
+        
+    };
+
+</script>
+
+    <style type="text/css">
+    <!–
+		body {
+		margin-left: 0px;
+		margin-top: 0px;
+		margin-right: 0px;
+		margin-bottom: 0px;
+    }
+    –>
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas" height="640px" width="640px">
+    Su navegador no soporta Canvas!
+    </canvas>
+
+</body>
+
+</html>
